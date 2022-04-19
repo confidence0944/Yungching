@@ -42,5 +42,47 @@ namespace Web.Controllers
                 return View(category);
             }
         }
+
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                var category = categoryRepositoty.Get(id.Value);
+                return View(category);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            if (category != null && ModelState.IsValid)
+            {
+                categoryRepositoty.Update(category);
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View(category);
+            }
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                var category = categoryRepositoty.Get(id.Value);
+                categoryRepositoty.Delete(category);
+
+                return RedirectToAction("index");
+            }
+        }
     }
 }

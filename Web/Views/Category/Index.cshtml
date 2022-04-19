@@ -19,8 +19,8 @@
                 <td>@item.CategoryId</td>
                 <td>@item.CategoryName</td>
                 <td>@item.Description</td>
-                <td><a href="javascipt:void(0)">Editor</a></td>
-                <td><a href="javascipt:void(0)">Delete</a></td>
+                <td><a href="@Url.Action("Edit","Category",new { id= @item.CategoryId})">Editor</a></td>
+                <td><a href="@Url.Action("Delete","Category",new { id=@item.CategoryId})">Delete</a></td>
             </tr>
         }
     </tbody>
