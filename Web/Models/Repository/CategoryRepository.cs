@@ -8,7 +8,7 @@ using Web.Models.Interface;
 
 namespace Web.Models.Repository
 {
-    public class CategoryRepository : ICategoryRepositoty
+    public class CategoryRepository : ICategoryRepositoty, IDisposable
     {
         private NorthwindContext db;
 

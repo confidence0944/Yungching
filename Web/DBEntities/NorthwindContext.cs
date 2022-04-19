@@ -96,8 +96,6 @@ namespace Web.DBEntities
                     .HasMaxLength(15);
 
                 entity.Property(e => e.Description).HasColumnType("ntext");
-
-                entity.Property(e => e.Picture).HasColumnType("image");
             });
 
             modelBuilder.Entity<CategorySalesFor1997>(entity =>
@@ -566,9 +564,7 @@ namespace Web.DBEntities
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
-                entity.Property(e => e.ProductName)
-                    .IsRequired()
-                    .HasMaxLength(40);
+                entity.Property(e => e.ProductName).HasMaxLength(40);
 
                 entity.Property(e => e.QuantityPerUnit).HasMaxLength(20);
 
