@@ -8,26 +8,26 @@ using Web.Models.Interface;
 
 namespace Web.Models.Repository
 {
-    public class ProductRepository : IProductRepositoty, IDisposable
+    public class CategoryRepository : ICategoryRepositoty
     {
         private NorthwindContext db;
 
-        public ProductRepository()
+        public CategoryRepository()
         {
             db = new NorthwindContext();
         }
 
-        public Product Get(int productID)
+        public Category Get(int categoryID)
         {
-            return db.Products.FirstOrDefault(x => x.ProductId == productID);
+            return db.Categories.FirstOrDefault(x => x.CategoryId == categoryID);
         }
 
-        public IQueryable<Product> GetAll()
+        public IQueryable<Category> GetAll()
         {
-            return db.Products.OrderBy(x => x.ProductId);
+            return db.Categories.OrderBy(x => x.CategoryId);
         }
 
-        public void Create(Product instance)
+        public void Create(Category instance)
         {
             if (instance == null)
             {
@@ -35,12 +35,12 @@ namespace Web.Models.Repository
             }
             else
             {
-                db.Products.Add(instance);
+                db.Categories.Add(instance);
                 SaveChanges();
             }
         }
 
-        public void Delete(Product instance)
+        public void Delete(Category instance)
         {
             if (instance == null)
             {
@@ -58,7 +58,7 @@ namespace Web.Models.Repository
             db.SaveChanges();
         }
 
-        public void Update(Product instance)
+        public void Update(Category instance)
         {
             if (instance == null)
             {
@@ -71,13 +71,21 @@ namespace Web.Models.Repository
             }
         }
 
-
         public void Dispose()
         {
-            if (db != null)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                db.Dispose();
-                db = null;
+                if (db != null)
+                {
+                    db.Dispose();
+                    db = null;
+                }
             }
         }
     }

@@ -1,0 +1,25 @@
+﻿@model List<Web.DBEntities.Category>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>Description</th>
+            <th>Editor</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td><a href="javascipt:void(0)">Editor</a></td>
+                <td><a href="javascipt:void(0)">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

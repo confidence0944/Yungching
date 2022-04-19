@@ -8,18 +8,18 @@ using Web.Models.Repository;
 
 namespace Web.Controllers
 {
-    public class ProductController : Controller
+    public class CategoryController : Controller
     {
-        private IProductRepositoty productRepositoty;
+        private ICategoryRepositoty categoryRepositoty;
 
-        public ProductController()
+        public CategoryController()
         {
-            productRepositoty = new ProductRepository();
+            categoryRepositoty = new CategoryRepository();
         }
 
         public IActionResult Index()
         {
-            var data = productRepositoty.GetAll().ToList();
+            var data = categoryRepositoty.GetAll().ToList();
             return View(data);
         }
     }
