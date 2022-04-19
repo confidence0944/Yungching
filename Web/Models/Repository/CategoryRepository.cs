@@ -12,9 +12,9 @@ namespace Web.Models.Repository
     {
         private NorthwindContext db;
 
-        public CategoryRepository()
+        public CategoryRepository(NorthwindContext _dbInstance)
         {
-            db = new NorthwindContext();
+            db = _dbInstance;
         }
 
         public Category Get(int categoryID)

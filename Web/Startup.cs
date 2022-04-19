@@ -24,7 +24,10 @@ namespace Web
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICategoryRepositoty, CategoryRepository>();
+            //DI
+            DependencyInjection dependencyInjection = new DependencyInjection(Configuration);
+            dependencyInjection.InjectDependencies(services);
+
             services.AddControllersWithViews();
         }
 
