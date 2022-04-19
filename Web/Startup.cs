@@ -19,7 +19,7 @@ namespace Web
         }
 
         public IConfiguration Configuration { get; }
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
