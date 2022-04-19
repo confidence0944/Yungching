@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Web.DBEntities;
+using Web.Models.Interface;
 
 namespace Web.Controllers.UnitTests
 {
     [TestClass()]
     public class CategoryControllerTests
     {
+        private ICategoryRepositoty categoryRepositoty;
+
+        public CategoryControllerTests(ICategoryRepositoty _categoryRepositoty)
+        {
+            categoryRepositoty = _categoryRepositoty;
+        }
+
         [TestMethod()]
         public void IndexTest()
         {
@@ -21,7 +29,7 @@ namespace Web.Controllers.UnitTests
             var expected = GetIndexTestData();
 
             // Act
-            var controller = new CategoryController();
+            var controller = new CategoryController(categoryRepositoty);
             var actual = (List<Category>)(controller.Index() as ViewResult)?.Model;
 
             // Assert

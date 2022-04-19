@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Models.Interface;
+using Web.Models.Repository;
 
 namespace Web
 {
@@ -22,6 +24,7 @@ namespace Web
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICategoryRepositoty, CategoryRepository>();
             services.AddControllersWithViews();
         }
 

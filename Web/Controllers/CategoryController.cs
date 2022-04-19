@@ -13,9 +13,9 @@ namespace Web.Controllers
     {
         private ICategoryRepositoty categoryRepositoty;
 
-        public CategoryController()
+        public CategoryController(ICategoryRepositoty _categoryRepositoty)
         {
-            categoryRepositoty = new CategoryRepository();
+            categoryRepositoty = _categoryRepositoty;
         }
 
         public IActionResult Index()
