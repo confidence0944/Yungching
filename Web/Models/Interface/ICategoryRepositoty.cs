@@ -6,18 +6,8 @@ using Web.DBEntities;
 
 namespace Web.Models.Interface
 {
-    public interface ICategoryRepositoty
+    public interface ICategoryRepositoty : IGenericRepository<Category>
     {
-        Category Get(int productID);
-
-        void Create(Category instance);
-
-        void Update(Category instance);
-
-        void Delete(Category instance);
-
-        IQueryable<Category> GetAll();
-
-        void SaveChanges();
+      
     }
 }
